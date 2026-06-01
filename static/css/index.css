@@ -21,6 +21,17 @@ a:hover { color: var(--accent-dark); }
 /* ===== Hero / title ===== */
 .hero-body { padding-top: 3rem; padding-bottom: 1.5rem; }
 .publication-title { line-height: 1.2; }
+.title-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.1rem;
+  flex-wrap: wrap;
+}
+.title-logo { height: 96px; width: auto; flex: 0 0 auto; }
+@media (max-width: 768px) {
+  .title-logo { height: 64px; }
+}
 .venue {
   font-family: 'Google Sans', sans-serif;
   color: var(--accent-dark);
