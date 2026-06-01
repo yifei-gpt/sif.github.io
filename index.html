@@ -1,490 +1,248 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="description"
-        content="Deformable Neural Radiance Fields creates free-viewpoint portraits (nerfies) from casually captured videos.">
-  <meta name="keywords" content="Nerfies, D-NeRF, NeRF">
+        content="SIF: Semantically In-Distribution Fingerprints for Large Vision-Language Models. CVPR 2026.">
+  <meta name="keywords" content="SIF, LVLM, Fingerprinting, Watermarking, Vision-Language Models, Copyright, CVPR 2026">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Nerfies: Deformable Neural Radiance Fields</title>
+  <title>SIF: Semantically In-Distribution Fingerprints for Large Vision-Language Models</title>
 
-  <!-- Global site tag (gtag.js) - Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-
-    function gtag() {
-      dataLayer.push(arguments);
-    }
-
-    gtag('js', new Date());
-
-    gtag('config', 'G-PYVRSFMDRL');
-  </script>
+  <meta property="og:title" content="SIF: Semantically In-Distribution Fingerprints for LVLMs (CVPR 2026)">
+  <meta property="og:description" content="A non-intrusive, stealthy, and robust ownership-verification framework for Large Vision-Language Models.">
+  <meta property="og:image" content="./static/images/fig_Com-1.png">
+  <meta property="og:type" content="website">
 
   <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
         rel="stylesheet">
-
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
   <link rel="stylesheet" href="./static/css/bulma.min.css">
-  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
-  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
-  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
-  <link rel="stylesheet"
-        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
-  <link rel="stylesheet" href="./static/css/index.css">
-  <link rel="icon" href="./static/images/favicon.svg">
-
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="./static/css/index.css?v=10">
   <script defer src="./static/js/fontawesome.all.min.js"></script>
-  <script src="./static/js/bulma-carousel.min.js"></script>
-  <script src="./static/js/bulma-slider.min.js"></script>
-  <script src="./static/js/index.js"></script>
+  <link rel="icon" href="./static/images/favicon.svg">
 </head>
 <body>
 
-<nav class="navbar" role="navigation" aria-label="main navigation">
-  <div class="navbar-brand">
-    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
-      <span aria-hidden="true"></span>
-      <span aria-hidden="true"></span>
-      <span aria-hidden="true"></span>
-    </a>
-  </div>
-  <div class="navbar-menu">
-    <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
-      <a class="navbar-item" href="https://keunhong.com">
-      <span class="icon">
-          <i class="fas fa-home"></i>
-      </span>
-      </a>
-
-      <div class="navbar-item has-dropdown is-hoverable">
-        <a class="navbar-link">
-          More Research
-        </a>
-        <div class="navbar-dropdown">
-          <a class="navbar-item" href="https://hypernerf.github.io">
-            HyperNeRF
-          </a>
-          <a class="navbar-item" href="https://nerfies.github.io">
-            Nerfies
-          </a>
-          <a class="navbar-item" href="https://latentfusion.github.io">
-            LatentFusion
-          </a>
-          <a class="navbar-item" href="https://photoshape.github.io">
-            PhotoShape
-          </a>
-        </div>
-      </div>
-    </div>
-
-  </div>
-</nav>
-
-
+<!-- ============ TITLE / HERO ============ -->
 <section class="hero">
   <div class="hero-body">
-    <div class="container is-max-desktop">
-      <div class="columns is-centered">
-        <div class="column has-text-centered">
-          <h1 class="title is-1 publication-title">Nerfies: Deformable Neural Radiance Fields</h1>
-          <div class="is-size-5 publication-authors">
-            <span class="author-block">
-              <a href="https://keunhong.com">Keunhong Park</a><sup>1</sup>,</span>
-            <span class="author-block">
-              <a href="https://utkarshsinha.com">Utkarsh Sinha</a><sup>2</sup>,</span>
-            <span class="author-block">
-              <a href="https://jonbarron.info">Jonathan T. Barron</a><sup>2</sup>,
-            </span>
-            <span class="author-block">
-              <a href="http://sofienbouaziz.com">Sofien Bouaziz</a><sup>2</sup>,
-            </span>
-            <span class="author-block">
-              <a href="https://www.danbgoldman.com">Dan B Goldman</a><sup>2</sup>,
-            </span>
-            <span class="author-block">
-              <a href="https://homes.cs.washington.edu/~seitz/">Steven M. Seitz</a><sup>1,2</sup>,
-            </span>
-            <span class="author-block">
-              <a href="http://www.ricardomartinbrualla.com">Ricardo Martin-Brualla</a><sup>2</sup>
-            </span>
-          </div>
+    <div class="container is-max-desktop has-text-centered">
+      <h1 class="title is-2 publication-title">
+        SIF: Semantically In-Distribution Fingerprints<br>for Large Vision-Language Models
+      </h1>
 
-          <div class="is-size-5 publication-authors">
-            <span class="author-block"><sup>1</sup>University of Washington,</span>
-            <span class="author-block"><sup>2</sup>Google Research</span>
-          </div>
+      <div class="is-size-5 publication-authors" style="margin-top:1rem;">
+        <span class="author-block"><a href="https://yifei-gpt.github.io/" target="_blank" rel="noopener">Yifei Zhao</a>,</span>
+        <span class="author-block"><a href="https://www.qlou.org/" target="_blank" rel="noopener">Qian Lou</a>,</span>
+        <span class="author-block"><a href="https://mxzheng.github.io/" target="_blank" rel="noopener">Mengxin Zheng</a></span>
+      </div>
+      <div class="is-size-6 affiliation">
+        <span class="author-block">University of Central Florida</span>
+      </div>
 
-          <div class="column has-text-centered">
-            <div class="publication-links">
-              <!-- PDF Link. -->
-              <span class="link-block">
-                <a href="https://arxiv.org/pdf/2011.12948"
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="fas fa-file-pdf"></i>
-                  </span>
-                  <span>Paper</span>
-                </a>
-              </span>
-              <span class="link-block">
-                <a href="https://arxiv.org/abs/2011.12948"
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="ai ai-arxiv"></i>
-                  </span>
-                  <span>arXiv</span>
-                </a>
-              </span>
-              <!-- Video Link. -->
-              <span class="link-block">
-                <a href="https://www.youtube.com/watch?v=MrKrnHhk8IA"
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="fab fa-youtube"></i>
-                  </span>
-                  <span>Video</span>
-                </a>
-              </span>
-              <!-- Code Link. -->
-              <span class="link-block">
-                <a href="https://github.com/google/nerfies"
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="fab fa-github"></i>
-                  </span>
-                  <span>Code</span>
-                  </a>
-              </span>
-              <!-- Dataset Link. -->
-              <span class="link-block">
-                <a href="https://github.com/google/nerfies/releases/tag/0.1"
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="far fa-images"></i>
-                  </span>
-                  <span>Data</span>
-                  </a>
-            </div>
-
-          </div>
-        </div>
+      <div class="publication-links">
+        <span class="link-block">
+          <a href="https://arxiv.org/abs/2604.17041" target="_blank" rel="noopener" class="external-link button is-normal is-rounded is-dark">
+            <span class="icon"><i class="ai ai-arxiv"></i></span><span>arXiv</span>
+          </a>
+        </span>
+        <span class="link-block">
+          <a href="https://github.com/UCF-ML-Research/SIF-VLM-Fingerprint" target="_blank" rel="noopener" class="external-link button is-normal is-rounded is-dark">
+            <span class="icon"><i class="fab fa-github"></i></span><span>Code</span>
+          </a>
+        </span>
+        <span class="link-block">
+          <a href="./static/pdfs/SIF_poster.pdf" target="_blank" rel="noopener" class="external-link button is-normal is-rounded is-dark">
+            <span class="icon"><i class="fas fa-image"></i></span><span>Poster</span>
+          </a>
+        </span>
       </div>
     </div>
   </div>
 </section>
 
-<section class="hero teaser">
+<!-- ============ ABSTRACT ============ -->
+<section class="section" style="padding-top:1.5rem;">
   <div class="container is-max-desktop">
-    <div class="hero-body">
-      <video id="teaser" autoplay muted loop playsinline height="100%">
-        <source src="./static/videos/teaser.mp4"
-                type="video/mp4">
-      </video>
-      <h2 class="subtitle has-text-centered">
-        <span class="dnerf">Nerfies</span> turns selfie videos from your phone into
-        free-viewpoint
-        portraits.
-      </h2>
-    </div>
-  </div>
-</section>
-
-
-<section class="hero is-light is-small">
-  <div class="hero-body">
-    <div class="container">
-      <div id="results-carousel" class="carousel results-carousel">
-        <div class="item item-steve">
-          <video poster="" id="steve" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/steve.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-chair-tp">
-          <video poster="" id="chair-tp" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/chair-tp.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-shiba">
-          <video poster="" id="shiba" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/shiba.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-fullbody">
-          <video poster="" id="fullbody" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/fullbody.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-blueshirt">
-          <video poster="" id="blueshirt" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/blueshirt.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-mask">
-          <video poster="" id="mask" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/mask.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-coffee">
-          <video poster="" id="coffee" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/coffee.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-toby">
-          <video poster="" id="toby" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/toby2.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-<section class="section">
-  <div class="container is-max-desktop">
-    <!-- Abstract. -->
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
-        <h2 class="title is-3">Abstract</h2>
+        <h2 class="title is-3 section-title">Abstract</h2>
         <div class="content has-text-justified">
-          <p>
-            We present the first method capable of photorealistically reconstructing a non-rigidly
-            deforming scene using photos/videos captured casually from mobile phones.
+          <p class="tldr-line">
+            <span class="tldr">TL;DR &mdash;</span> Existing LVLM fingerprints are
+            <span class="hl-red">easy to detect and erase</span> because they are semantically abnormal.
+            <strong>SIF</strong> keeps the ownership signal <span class="hl-blue">in-distribution</span>, achieving
+            state-of-the-art stealthiness and robustness with no parameter changes.
           </p>
           <p>
-            Our approach augments neural radiance fields
-            (NeRF) by optimizing an
-            additional continuous volumetric deformation field that warps each observed point into a
-            canonical 5D NeRF.
-            We observe that these NeRF-like deformation fields are prone to local minima, and
-            propose a coarse-to-fine optimization method for coordinate-based models that allows for
-            more robust optimization.
-            By adapting principles from geometry processing and physical simulation to NeRF-like
-            models, we propose an elastic regularization of the deformation field that further
-            improves robustness.
-          </p>
-          <p>
-            We show that <span class="dnerf">Nerfies</span> can turn casually captured selfie
-            photos/videos into deformable NeRF
-            models that allow for photorealistic renderings of the subject from arbitrary
-            viewpoints, which we dub <i>"nerfies"</i>. We evaluate our method by collecting data
-            using a
-            rig with two mobile phones that take time-synchronized photos, yielding train/validation
-            images of the same pose at different viewpoints. We show that our method faithfully
-            reconstructs non-rigidly deforming scenes and reproduces unseen views with high
-            fidelity.
+            The public accessibility of Large Vision–Language Models (LVLMs) raises concerns about unauthorized reuse.
+            Existing ownership-verification methods rely on semantically abnormal queries or out-of-distribution responses,
+            which adversaries can easily detect and remove. We first expose this via the <strong>Semantic Divergence Attack
+            (SDA)</strong>, which filters fingerprint checks by measuring semantic divergence from a reference model. To
+            address it, we propose <strong>SIF</strong> (Semantically In-Distribution Fingerprints), a non-intrusive
+            framework. <strong>Semantic-Aligned Fingerprint Distillation (SAFD)</strong> distills text-generation watermark
+            signals into the visual modality for semantically coherent yet fingerprinted responses, and
+            <strong>Robust-Fingerprint Optimization (RFO)</strong> simulates worst-case representation perturbations for
+            resilience to fine-tuning and quantization. Experiments on LLaVA-1.5 and Qwen2.5-VL show that SIF achieves
+            superior stealthiness and robustness.
           </p>
         </div>
       </div>
     </div>
-    <!--/ Abstract. -->
-
-    <!-- Paper video. -->
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Video</h2>
-        <div class="publication-video">
-          <iframe src="https://www.youtube.com/embed/MrKrnHhk8IA?rel=0&amp;showinfo=0"
-                  frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-        </div>
-      </div>
-    </div>
-    <!--/ Paper video. -->
   </div>
 </section>
 
+<!-- ============ MOTIVATION + ATTACK (merged) ============ -->
+<section class="section" style="padding-top:.5rem;">
+  <div class="container is-max-desktop has-text-centered">
+    <h2 class="title is-3 section-title">The Vulnerability: Semantic Divergence Attack</h2>
+    <p class="content has-text-justified" style="max-width:760px;margin:0 auto 1.5rem;">
+      Prior fingerprints are semantically abnormal by design, so a stealer can run a small <strong>reference LVLM</strong>
+      beside the stolen model: abnormal prompts <span class="hl-red">(high perplexity)</span> or outputs that
+      <span class="hl-red">diverge</span> from the reference are <span class="hl-red">flagged</span> and replaced with the
+      reference response &mdash; <span class="hl-red">scrubbing the fingerprint</span>.
+    </p>
+    <div class="columns is-centered">
+      <div class="column is-6">
+        <div class="fig vuln-fig">
+          <img src="./static/images/fig_Com-1.png?v=3"
+               alt="Comparison between existing LVLM fingerprinting methods and SIF.">
+          <figcaption class="has-text-justified">
+            Existing methods &mdash; <em>IF</em>, <em>ProFLingo</em>, and <em>PLA</em> &mdash; rely on unnatural triggers
+            or semantically irrelevant responses (e.g. answering <em>“CVPR Conference”</em> for a skier). <strong>SIF</strong>
+            instead produces in-distribution, semantically coherent fingerprint responses.
+          </figcaption>
+        </div>
+      </div>
+      <div class="column is-6">
+        <div class="fig vuln-fig">
+          <img src="./static/images/fig_Attack_v3-1.png"
+               alt="Semantic Divergence Attack: a reference model flags suspicious queries and responses.">
+          <figcaption class="has-text-justified">
+            The Semantic Divergence Attack measures semantic divergence from a benign reference model, flags suspicious
+            queries and responses, and substitutes the reference output &mdash; removing semantically abnormal fingerprints.
+          </figcaption>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
+<!-- ============ METHOD ============ -->
 <section class="section">
-  <div class="container is-max-desktop">
+  <div class="container is-max-desktop has-text-centered">
+    <h2 class="title is-3 section-title">SIF: Hiding the Fingerprint in Plain Sight</h2>
+
+    <div class="fig fig-method" style="margin-bottom:1.6rem;">
+      <img src="./static/images/fig_Optimization_v4-1.png"
+           alt="SIF pipeline: fingerprint construction with SAFD and RFO, then black-box copyright verification.">
+      <figcaption class="has-text-centered">
+        <strong>(a)</strong> A tiny perturbation distills a text watermark into a trigger image (SAFD), hardened against
+        representation drift (RFO). <strong>(b)</strong> Standard decoding on the suspect API emits the signal &mdash;
+        verified fully black-box.
+      </figcaption>
+    </div>
 
     <div class="columns is-centered">
-
-      <!-- Visual Effects. -->
-      <div class="column">
-        <div class="content">
-          <h2 class="title is-3">Visual Effects</h2>
-          <p>
-            Using <i>nerfies</i> you can create fun visual effects. This Dolly zoom effect
-            would be impossible without nerfies since it would require going through a wall.
-          </p>
-          <video id="dollyzoom" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/dollyzoom-stacked.mp4"
-                    type="video/mp4">
-          </video>
+      <div class="column is-6">
+        <div class="method-card has-text-left">
+          <h3 class="title is-5">Semantic-Aligned Fingerprint Distillation</h3>
+          <p>Distills a decoder-side text-generation watermark <strong>into the input image</strong>. A small perturbation
+            (16/255) is optimized so the model generates green-list watermark tokens while keeping the response close to a
+            natural teacher output &mdash; so the reply reads normally yet statistically carries a detectable signal.</p>
         </div>
       </div>
-      <!--/ Visual Effects. -->
-
-      <!-- Matting. -->
-      <div class="column">
-        <h2 class="title is-3">Matting</h2>
-        <div class="columns is-centered">
-          <div class="column content">
-            <p>
-              As a byproduct of our method, we can also solve the matting problem by ignoring
-              samples that fall outside of a bounding box during rendering.
-            </p>
-            <video id="matting-video" controls playsinline height="100%">
-              <source src="./static/videos/matting.mp4"
-                      type="video/mp4">
-            </video>
-          </div>
-
+      <div class="column is-6">
+        <div class="method-card has-text-left">
+          <h3 class="title is-5">Robust-Fingerprint Optimization</h3>
+          <p>Stealers <strong>quantize</strong> or <strong>fine-tune</strong> models, which shifts internal
+            representations and breaks fragile fingerprints. RFO simulates worst-case representation perturbations during
+            optimization, hardening the trigger so the fingerprint survives such model modifications.</p>
         </div>
       </div>
     </div>
-    <!--/ Matting. -->
 
-    <!-- Animation. -->
-    <div class="columns is-centered">
-      <div class="column is-full-width">
-        <h2 class="title is-3">Animation</h2>
-
-        <!-- Interpolating. -->
-        <h3 class="title is-4">Interpolating states</h3>
-        <div class="content has-text-justified">
-          <p>
-            We can also animate the scene by interpolating the deformation latent codes of two input
-            frames. Use the slider here to linearly interpolate between the left frame and the right
-            frame.
-          </p>
-        </div>
-        <div class="columns is-vcentered interpolation-panel">
-          <div class="column is-3 has-text-centered">
-            <img src="./static/images/interpolate_start.jpg"
-                 class="interpolation-image"
-                 alt="Interpolate start reference image."/>
-            <p>Start Frame</p>
-          </div>
-          <div class="column interpolation-video-column">
-            <div id="interpolation-image-wrapper">
-              Loading...
-            </div>
-            <input class="slider is-fullwidth is-large is-info"
-                   id="interpolation-slider"
-                   step="1" min="0" max="100" value="0" type="range">
-          </div>
-          <div class="column is-3 has-text-centered">
-            <img src="./static/images/interpolate_end.jpg"
-                 class="interpolation-image"
-                 alt="Interpolation end reference image."/>
-            <p class="is-bold">End Frame</p>
-          </div>
-        </div>
-        <br/>
-        <!--/ Interpolating. -->
-
-        <!-- Re-rendering. -->
-        <h3 class="title is-4">Re-rendering the input video</h3>
-        <div class="content has-text-justified">
-          <p>
-            Using <span class="dnerf">Nerfies</span>, you can re-render a video from a novel
-            viewpoint such as a stabilized camera by playing back the training deformations.
-          </p>
-        </div>
-        <div class="content has-text-centered">
-          <video id="replay-video"
-                 controls
-                 muted
-                 preload
-                 playsinline
-                 width="75%">
-            <source src="./static/videos/replay.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <!--/ Re-rendering. -->
-
-      </div>
+    <div class="fig fig-example" style="margin-top:2rem;">
+      <img src="./static/images/fig_example.png"
+           alt="Verification example: the trigger image elicits watermarked responses from suspect models (detected) but not from an unrelated model.">
+      <figcaption class="has-text-centered">
+        Suspect models are <strong>detected</strong> via a strong watermark signal, while an unrelated model is not.
+      </figcaption>
     </div>
-    <!--/ Animation. -->
-
-
-    <!-- Concurrent Work. -->
-    <div class="columns is-centered">
-      <div class="column is-full-width">
-        <h2 class="title is-3">Related Links</h2>
-
-        <div class="content has-text-justified">
-          <p>
-            There's a lot of excellent work that was introduced around the same time as ours.
-          </p>
-          <p>
-            <a href="https://arxiv.org/abs/2104.09125">Progressive Encoding for Neural Optimization</a> introduces an idea similar to our windowed position encoding for coarse-to-fine optimization.
-          </p>
-          <p>
-            <a href="https://www.albertpumarola.com/research/D-NeRF/index.html">D-NeRF</a> and <a href="https://gvv.mpi-inf.mpg.de/projects/nonrigid_nerf/">NR-NeRF</a>
-            both use deformation fields to model non-rigid scenes.
-          </p>
-          <p>
-            Some works model videos with a NeRF by directly modulating the density, such as <a href="https://video-nerf.github.io/">Video-NeRF</a>, <a href="https://www.cs.cornell.edu/~zl548/NSFF/">NSFF</a>, and <a href="https://neural-3d-video.github.io/">DyNeRF</a>
-          </p>
-          <p>
-            There are probably many more by the time you are reading this. Check out <a href="https://dellaert.github.io/NeRF/">Frank Dellart's survey on recent NeRF papers</a>, and <a href="https://github.com/yenchenlin/awesome-NeRF">Yen-Chen Lin's curated list of NeRF papers</a>.
-          </p>
-        </div>
-      </div>
-    </div>
-    <!--/ Concurrent Work. -->
-
   </div>
 </section>
 
+<!-- ============ RESULTS ============ -->
+<section class="section">
+  <div class="container is-max-desktop has-text-centered">
+    <h2 class="title is-3 section-title">Robustness to Model Modifications</h2>
+    <p class="content has-text-justified" style="max-width:760px;margin:0 auto 1.5rem;">
+      In practice, a stolen model is often modified before deployment. Across <strong>quantization</strong> (4-/8-bit) and
+      <strong>full fine-tuning</strong> on six downstream datasets, <strong>SIF</strong> consistently retains the
+      <span class="hl-blue">highest fingerprint matching rate</span> on both LLaVA-1.5-7B and Qwen2.5-VL-7B, while prior
+      methods are <span class="hl-red">largely erased</span>.
+    </p>
+    <div class="fig">
+      <img src="./static/images/robustness.png"
+           alt="Robustness table: Fingerprint Matching Rate under quantization and full fine-tuning, SIF vs. baselines.">
+      <figcaption class="has-text-centered">
+        Fingerprint Matching Rate (FMR, higher is better) under quantization and full fine-tuning. <strong>SIF (Ours)</strong>
+        achieves the best robustness across every setting. “N/A”: IF requires fingerprint embedding before model release.
+      </figcaption>
+    </div>
+  </div>
+</section>
 
+<!-- ============ BIBTEX ============ -->
 <section class="section" id="BibTeX">
   <div class="container is-max-desktop content">
-    <h2 class="title">BibTeX</h2>
-    <pre><code>@article{park2021nerfies,
-  author    = {Park, Keunhong and Sinha, Utkarsh and Barron, Jonathan T. and Bouaziz, Sofien and Goldman, Dan B and Seitz, Steven M. and Martin-Brualla, Ricardo},
-  title     = {Nerfies: Deformable Neural Radiance Fields},
-  journal   = {ICCV},
-  year      = {2021},
+    <h2 class="title is-3 section-title has-text-centered">BibTeX</h2>
+    <div class="bibtex-wrap">
+      <button class="copy-btn" id="copyBib" type="button">Copy</button>
+<pre><code id="bibtex">@InProceedings{Zhao_2026_CVPR,
+    author    = {Zhao, Yifei and Lou, Qian and Zheng, Mengxin},
+    title     = {SIF: Semantically In-Distribution Fingerprints for Large Vision-Language Models},
+    booktitle = {Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
+    month     = {June},
+    year      = {2026},
+    pages     = {17399-17408}
 }</code></pre>
+    </div>
   </div>
 </section>
 
-
+<!-- ============ FOOTER ============ -->
 <footer class="footer">
-  <div class="container">
-    <div class="content has-text-centered">
-      <a class="icon-link"
-         href="./static/videos/nerfies_paper.pdf">
-        <i class="fas fa-file-pdf"></i>
-      </a>
-      <a class="icon-link" href="https://github.com/keunhong" class="external-link" disabled>
-        <i class="fab fa-github"></i>
-      </a>
-    </div>
+  <div class="container is-max-desktop">
     <div class="columns is-centered">
-      <div class="column is-8">
-        <div class="content">
-          <p>
-            This website is licensed under a <a rel="license"
-                                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
-            Commons Attribution-ShareAlike 4.0 International License</a>.
-          </p>
-          <p>
-            This means you are free to borrow the <a
-              href="https://github.com/nerfies/nerfies.github.io">source code</a> of this website,
-            we just ask that you link back to this page in the footer.
-            Please remember to remove the analytics code included in the header of the website which
-            you do not want on your website.
-          </p>
-        </div>
+      <div class="column is-four-fifths has-text-centered content">
+        <p>
+          <a href="https://arxiv.org/abs/2604.17041" target="_blank" rel="noopener">arXiv</a> ·
+          <a href="https://github.com/UCF-ML-Research/SIF-VLM-Fingerprint" target="_blank" rel="noopener">Code</a> ·
+          <a href="./static/pdfs/SIF_poster.pdf" target="_blank" rel="noopener">Poster</a>
+        </p>
+        <p class="is-size-7">
+          Website built on the <a href="https://github.com/nerfies/nerfies.github.io" target="_blank" rel="noopener">Nerfies</a>
+          template, licensed under
+          <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">CC BY-SA 4.0</a>.
+          © 2026 UCF ML Research.
+        </p>
       </div>
     </div>
   </div>
 </footer>
 
+<script>
+  // Only interactivity: copy BibTeX (not an animation)
+  const copyBtn = document.getElementById('copyBib');
+  if (copyBtn) {
+    copyBtn.addEventListener('click', () => {
+      navigator.clipboard.writeText(document.getElementById('bibtex').textContent).then(() => {
+        copyBtn.textContent = 'Copied!';
+        setTimeout(() => copyBtn.textContent = 'Copy', 1500);
+      });
+    });
+  }
+</script>
 </body>
 </html>
