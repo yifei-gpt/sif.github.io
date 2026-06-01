@@ -28,9 +28,9 @@ a:hover { color: var(--accent-dark); }
   gap: 1.1rem;
   flex-wrap: wrap;
 }
-.title-logo { height: 96px; width: auto; flex: 0 0 auto; }
+.title-logo { height: 115px; width: auto; flex: 0 0 auto; }
 @media (max-width: 768px) {
-  .title-logo { height: 64px; }
+  .title-logo { height: 78px; }
 }
 .venue {
   font-family: 'Google Sans', sans-serif;
