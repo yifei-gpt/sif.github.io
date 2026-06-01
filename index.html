@@ -150,17 +150,18 @@
       <div class="column is-6">
         <div class="method-card has-text-left">
           <h3 class="title is-5">Semantic-Aligned Fingerprint Distillation</h3>
-          <p>Distills a decoder-side text-generation watermark <strong>into the input image</strong>. A small perturbation
+          <p>Distills a decoding-based text watermark <strong>into the input image</strong>. A small perturbation
             (16/255) is optimized so the model generates green-list watermark tokens while keeping the response close to a
-            natural teacher output &mdash; so the reply reads normally yet statistically carries a detectable signal.</p>
+            natural teacher output &mdash; so the reply looks natural yet carries a detectable signal.</p>
         </div>
       </div>
       <div class="column is-6">
         <div class="method-card has-text-left">
           <h3 class="title is-5">Robust-Fingerprint Optimization</h3>
           <p>Stealers <strong>quantize</strong> or <strong>fine-tune</strong> models, which shifts internal
-            representations and breaks fragile fingerprints. RFO simulates worst-case representation perturbations during
-            optimization, hardening the trigger so the fingerprint survives such model modifications.</p>
+            representations and breaks fragile fingerprints. <strong>RFO</strong> simulates worst-case representation
+            perturbations during optimization, so the resulting trigger keeps the fingerprint detectable even after such
+            model modifications.</p>
         </div>
       </div>
     </div>
